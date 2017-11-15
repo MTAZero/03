@@ -94,18 +94,20 @@ namespace BTL_QLTV
 
         private void FrSach_Load(object sender, EventArgs e)
         {
-            string connString = (ketnoi.conn);
-            SqlConnection conn = new SqlConnection(connString);
-            using (SqlCommand cmd = new SqlCommand("dssach", conn))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                dtgrv.DataSource = dt;
-                dtgrv.ReadOnly = true;
+            //string connString = (ketnoi.conn);
+            //SqlConnection conn = new SqlConnection(connString);
+            //using (SqlCommand cmd = new SqlCommand("dssach", conn))
+            //{
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //    DataTable dt = new DataTable();
+            //    da.Fill(dt);
+            //    dtgrv.DataSource = dt;
+            //    dtgrv.ReadOnly = true;
 
-            }
+            //}
+
+            dtgrv.DataSource = getSach();
         }
 
         private void btnt_Click(object sender, EventArgs e)
@@ -232,9 +234,9 @@ namespace BTL_QLTV
             string connString = (ketnoi.conn);
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
-            using (SqlCommand cmd = new SqlCommand("getsach", conn))
+            using (SqlCommand cmd = new SqlCommand("select MaSach, TenSach, SoLuong, NXB, NamXB, TenLoai from tblSach, tblTheLoai where tblSach.MaLoai = tblTheLoai.MaLoai", conn))
             {
-                cmd.CommandType = CommandType.StoredProcedure;
+
                 using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {
                     DataTable tbl = new DataTable();
