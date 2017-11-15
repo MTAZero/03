@@ -23,11 +23,18 @@ namespace BTL_QLTV
         {
             kn.kn_csdl();
             DataTable dt = new DataTable();
-            string caulenh = "select * from tblSinhVien";
-            dt = kn.laybang(caulenh);
+            string caulenh = @"select MaSV, HoTen, NgaySinh = YEAR(GETDATE()) - YEAR(tblSinhVien.NgaySinh) , GioiTinh, SDT, CMND, Lop, Email from tblSinhVien";
+             dt = kn.laybang(caulenh);
+
+            //foreach(DataRow row in dt.Rows)
+            //{
+            //    //row["NgaySinh"] = DateTime.Now - ((DateTime) row["NgaySinh"]);
+            //}
+
             RPSinhVien rp = new RPSinhVien();
             rp.SetDataSource(dt);
             crystalReportViewer1.ReportSource = rp;
+            crystalReportViewer1.Refresh();
         }
     }
 }

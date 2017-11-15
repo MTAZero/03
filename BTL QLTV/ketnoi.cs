@@ -12,7 +12,7 @@ namespace BTL_QLTV
     {
 
         public SqlConnection kn = new SqlConnection();
-        public static string conn = @"Data Source=HUYEN\SQLEXPRESS;Initial Catalog=QLTV;Integrated Security=True";
+        public static string conn = @"Data Source=.;Initial Catalog=QLTV;Integrated Security=True";
     
         public void kn_csdl()
         {
@@ -31,8 +31,10 @@ namespace BTL_QLTV
         public DataTable bangdulieu = new DataTable();
         public DataTable laybang(string caulenh)
         {
+            DataTable bangdulieu = new DataTable();
             try
             {
+                dongketnoi();
                 kn_csdl();
                 SqlDataAdapter Adapter = new SqlDataAdapter(caulenh, kn);
                 DataSet ds = new DataSet();

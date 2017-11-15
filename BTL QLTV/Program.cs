@@ -16,8 +16,8 @@ namespace BTL_QLTV
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrDSSinhVien());
-            Application.Run(new FormMain());
+            Application.Run(new FrDSSinhVien());
+            //Application.Run(new FormMain());
              
         }
     }
